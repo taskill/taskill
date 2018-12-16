@@ -19,29 +19,7 @@ export default {
     show: {
       type: Boolean,
       default: false
-    },
-    position: {
-      type: String,
-      default: 'left'
     }
-  },
-
-  data () {
-    return {
-
-    }
-  },
-
-  computed: {
-    setPosition () {
-      let position
-
-      if (this.position === 'left') position = 'left: 0'
-      if (this.position === 'right') position = 'right: 0'
-
-      return position
-    }
-
   }
 }
 </script>
