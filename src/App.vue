@@ -1,6 +1,3 @@
 <template>
-  <div id="app">Init commit</div>
+  <router-view></router-view>
 </template>
-
-<style lang="scss">
-</style>
