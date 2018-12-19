@@ -2,7 +2,23 @@
   <div class="side-menu-wrapper">
     <transition name="slide-to-left">
       <div class="side-menu" v-if="show">
-        <div class="side-menu__body"></div>
+        <div class="side-menu__body">
+          <div class="side-menu__close">
+            <svg-icon name="arrow-left"/>
+          </div>
+          <side-nav>
+            <side-nav-group name="Create a new">
+              <side-nav-item
+                v-for="i in navigation.sideMenu"
+                :key="i.name"
+                :name="i.name"
+                :icon="true"
+                :icon-name="i.icon"
+                :to="i.path"
+              ></side-nav-item>
+            </side-nav-group>
+          </side-nav>
+        </div>
       </div>
     </transition>
     <transition name="fade">
@@ -12,13 +28,29 @@
 </template>
 
 <script>
+import navigation from '@/navigation'
+import { SvgIcon, SideNav, SideNavItem, SideNavGroup } from '@/components/ui'
+
 export default {
   name: 'SideMenu',
+
+  components: {
+    SideNav,
+    SideNavItem,
+    SideNavGroup,
+    SvgIcon
+  },
 
   props: {
     show: {
       type: Boolean,
       default: false
+    }
+  },
+
+  data () {
+    return {
+      navigation
     }
   }
 }
