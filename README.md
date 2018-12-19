@@ -1,3 +1,7 @@
-# taskill-frontend
+# Taskill
 
-> Frontend part of Taskill
+> WIP
+
+Open source task manager
+
+<img src="./screenshot.png">
