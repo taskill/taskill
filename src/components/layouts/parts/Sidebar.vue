@@ -1,5 +1,10 @@
 <template>
   <div class="sidebar">
+    <div class="sidebar__inner">
+      <div class="logo">
+        <taskill-logo-text/>
+      </div>
+    </div>
     <div class="sidebar__panel">
       <div class="item">
         <div class="logo">
@@ -22,6 +27,7 @@
 <script>
 import SidebarPanelMenu from './SidebarPanelMenu.vue'
 import TaskillLogo from '@/assets/images/taskill-logo-icon-o.svg'
+import TaskillLogoText from '@/assets/images/taskill-logo-text.svg'
 import { SvgIcon } from '@/components/ui'
 
 export default {
@@ -29,6 +35,8 @@ export default {
 
   components: {
     SidebarPanelMenu,
+    TaskillLogo,
+    TaskillLogoText,
     SvgIcon
   },
 
@@ -50,8 +58,17 @@ export default {
 .sidebar {
   display: flex;
   @include panel-box-shadow();
-
+  &__inner {
+    margin-left: 50px;
+    width: 100%;
+    .logo {
+      width: 85px;
+      margin: 0 auto;
+      padding: 10px 0 20px 0;
+    }
+  }
   &__panel {
+    position: fixed;
     width: 50px;
     height: 100vh;
     @include panel-box-shadow();
@@ -77,9 +94,6 @@ export default {
         svg {
           fill: #fff;
         }
-      }
-      svg {
-        transform: scale(0.8, 0.8);
       }
     }
     .user-profile {
