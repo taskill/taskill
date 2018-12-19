@@ -27,6 +27,7 @@ export default {
 <style lang="scss">
 .side-menu {
   width: $sidebar-width;
+  display: flex;
   position: fixed;
   overflow-y: scroll;
   left: 0;
@@ -34,6 +35,32 @@ export default {
   bottom: 0;
   background-color: #fff;
   z-index: 1000;
+  align-items: center;
+  &__body {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  &__close {
+    margin: 0 10px 0 30px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    &:hover {
+      background-color: $color-grey;
+      svg {
+        fill: #000;
+      }
+    }
+    svg {
+      fill: $color-grey-3;
+    }
+  }
 }
 .overlay {
   position: fixed;
