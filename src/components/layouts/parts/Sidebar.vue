@@ -8,7 +8,7 @@
       </div>
       <div class="item">
         <div class="add-new" @click="toggleSideMenu">
-          <plus-icon/>
+          <svg-icon name="plus"/>
         </div>
       </div>
       <div class="item">
@@ -21,16 +21,15 @@
 
 <script>
 import SidebarPanelMenu from './SidebarPanelMenu.vue'
-import PlusIcon from '@/assets/images/icons/plus.svg'
 import TaskillLogo from '@/assets/images/taskill-logo-icon-o.svg'
+import { SvgIcon } from '@/components/ui'
 
 export default {
   name: 'Sidebar',
 
   components: {
     SidebarPanelMenu,
-    PlusIcon,
-    TaskillLogo
+    SvgIcon
   },
 
   data () {
