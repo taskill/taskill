@@ -2,7 +2,7 @@
 
 > WIP
 
-Open source task manager
+The goal of this project is to create an open source independent task manager on a javascript stack that can be use locally or in web. Idea of creation inspired by redmine
 
 <img src="./screenshot.png">
 
@@ -10,6 +10,8 @@ Open source task manager
 
 ### Client
 
+- [ ] Layout
+- [ ] Sing in / Sing up / Reset
 - [ ] Projects
 - [ ] Project
 - [ ] Project settings
@@ -21,7 +23,7 @@ Open source task manager
 
 ### Server
 
-- [x] Sing in / Sing up
+- [x] Sing in / Sing up / Reset
 - [x] Authorization by JWT
 - [x] Project CRUD
 - [x] Project add to favorite
