@@ -1,0 +1,30 @@
+{
+  "name": "taskill-server",
+  "description": "Backend part of Taskill",
+  "version": "0.1.0",
+  "author": "Anton Reshetov <reshetov.art@gmail.com>",
+  "private": true,
+  "main": "app.js",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "helmet": "^3.12.1",
+    "joi": "^13.3.0",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.1.1",
+    "nodemailer": "^4.6.4"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon app",
+    "seed": "cross-env NODE_ENV=development node ./db/seed"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.5",
+    "dotenv": "^6.2.0",
+    "eslint": "^4.19.1",
+    "faker": "^4.1.0",
+    "nodemon": "^1.17.4"
+  }
+}
