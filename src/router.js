@@ -15,6 +15,21 @@ export default new Router({
       component: DefaultTheme
     },
     {
+      path: '/signin',
+      component: () =>
+        import(/* webpackChunkName: "SignIn" */ '@/views/Login.vue')
+    },
+    {
+      path: '/signup',
+      component: () =>
+        import(/* webpackChunkName: "SignUp" */ '@/views/Login.vue')
+    },
+    {
+      path: '/reset',
+      component: () =>
+        import(/* webpackChunkName: "Reset" */ '@/views/Login.vue')
+    },
+    {
       path: '*',
       component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue')
     }
