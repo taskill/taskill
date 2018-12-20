@@ -3,7 +3,7 @@
     <transition name="slide-to-left">
       <div class="side-menu" v-if="show">
         <div class="side-menu__body">
-          <div class="side-menu__close">
+          <div class="side-menu__close" @click="$emit('close')">
             <svg-icon name="arrow-left"/>
           </div>
           <side-nav>
