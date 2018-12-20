@@ -13,6 +13,10 @@ export default new Router({
     {
       path: '/',
       component: DefaultTheme
+    },
+    {
+      path: '*',
+      component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue')
     }
   ]
 })
