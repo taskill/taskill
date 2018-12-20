@@ -1,4 +1,14 @@
 body {
   font-family: $font-main;
   font-size: 14px;
+  color: $color-text;
+}
+
+a {
+  color: $color-blue;
+  text-decoration: none;
+  transition: all 0.2s;
+  &:hover {
+    color: lighten($color-blue, 10%);
+  }
 }
