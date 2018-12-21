@@ -27,6 +27,12 @@ export default {
         commit('SET_USER', res.data.data)
         auth.setLocalStorage(res.data.data)
         router.push('/')
+      } catch (err) {
+        payload.vm.$notify.error({
+          title: 'Error',
+          message: 'Invalid Login or password'
+        })
+      }
     }
   }
 }
