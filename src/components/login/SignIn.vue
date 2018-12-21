@@ -3,16 +3,16 @@
     <h2>Sign in</h2>
     <el-form>
       <el-form-item label="Email">
-        <el-input></el-input>
+        <el-input v-model="email"></el-input>
       </el-form-item>
       <el-form-item>
         <template name="label">Password
           <router-link to="/reset">forgot?</router-link>
         </template>
-        <el-input></el-input>
+        <el-input v-model="password" type="password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" style="width:100%;">Sign in</el-button>
+        <el-button type="primary" style="width:100%;" @click="signIn">Sign in</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -33,7 +33,16 @@ export default {
 
   data () {
     return {
+      email: undefined,
+      password: undefined
+    }
+  },
 
+  methods: {
+    signIn () {
+      const email = this.email
+      const password = this.password
+      this.$store.dispatch('signIn', { email, password, vm: this })
     }
   }
 }
