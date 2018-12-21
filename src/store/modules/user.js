@@ -11,7 +11,13 @@ export default {
     }
   },
   actions: {
-    async signIn ({ state, commit, dispatch, rootState }, payload) {
+    /**
+     * Sign in
+     * @param {string} email - user email
+     * @param {string} password - user password
+     * @param {object} vm - vue instance
+     */
+    async signIn ({ commit }, payload) {
       try {
         const res = await signIn({
           email: payload.email,
