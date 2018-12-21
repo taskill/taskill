@@ -7,7 +7,7 @@ module.exports = {
   /**
    * Регистрация
    */
-  async singUp (req, res, next) {
+  async signUp (req, res, next) {
     // REST валидация
     const schema = {
       name: Joi.string()
@@ -60,12 +60,12 @@ module.exports = {
         from: '"Taskill" taskill@antonreshetov.com',
         to: user.email,
         subject: 'Congratulations with the registration',
-        text: `To sing in <a href="${
+        text: `To sign in <a href="${
           process.env.CLIENT_URI
-        }/singin">follow the link</a> and enter your email and password`,
-        html: `To sing in <a href="${
+        }/signin">follow the link</a> and enter your email and password`,
+        html: `To sign in <a href="${
           process.env.CLIENT_URI
-        }/singin">follow the link</a> and enter your email and password`
+        }/signin">follow the link</a> and enter your email and password`
       }
 
       transporter.sendMail(mailOptions, (error, info) => {
@@ -93,7 +93,7 @@ module.exports = {
   /**
    * Авторизация
    */
-  async singIn (req, res, next) {
+  async signIn (req, res, next) {
     try {
       const user = await User.findOne({ email: req.body.email })
 
@@ -107,7 +107,7 @@ module.exports = {
               message: 'Invalid login or password'
             }
           },
-          message: 'There were problems on sing in:'
+          message: 'There were problems on sign in:'
         })
       }
 
@@ -138,7 +138,7 @@ module.exports = {
               message: 'Invalid login or password'
             }
           },
-          message: 'There were problems on sing in:'
+          message: 'There were problems on sign in:'
         })
       }
     } catch (err) {
@@ -146,7 +146,7 @@ module.exports = {
       return res.send({
         success: false,
         status: 400,
-        message: 'There were problems on sing in:'
+        message: 'There were problems on sign in:'
       })
     }
   },
