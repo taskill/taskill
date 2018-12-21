@@ -1,5 +1,6 @@
 import { signIn } from '../../services/api'
 import auth from '../../services/auth'
+import router from '../../router'
 
 export default {
   state: {
@@ -25,7 +26,7 @@ export default {
         })
         commit('SET_USER', res.data.data)
         auth.setLocalStorage(res.data.data)
-      } catch (err) {}
+        router.push('/')
     }
   }
 }
