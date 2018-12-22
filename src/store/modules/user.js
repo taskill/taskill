@@ -28,7 +28,7 @@ export default {
           password: payload.password
         })
         commit('SET_USER', res.data.data)
-        auth.setLocalStorage(res.data.data)
+        auth.setLocalStorage(res.data)
         router.push('/')
       } catch (err) {
         payload.vm.$notify.error({
