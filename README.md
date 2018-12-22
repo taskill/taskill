@@ -12,7 +12,8 @@ Clone the repo and install client and server parts. Also on the local machine mu
 
 ```bash
 npm i
-cd server npm i
+cd server
+npm i
 ```
 
 Fill in the client and server environment variables
@@ -41,6 +42,17 @@ MAIL_PASS=password # email password
 # Client
 PORT=8080 # start client on port 8080 - http://localhost:8080
 VUE_APP_SERVER_API=http://localhost:3000/api
+```
+
+## Launch
+
+```bash
+# Client
+npm run serve
+# Server
+cd server
+npm start
+
 ```
 
 ## Roadmap
