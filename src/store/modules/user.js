@@ -1,4 +1,4 @@
-import { signIn } from '../../services/api'
+import { signIn, getUserById } from '../../services/api'
 import auth from '../../services/auth'
 import router from '../../router'
 
