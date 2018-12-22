@@ -50,7 +50,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: error.details[0].message,
@@ -67,7 +67,7 @@ module.exports = {
     })
 
     if (existSlug) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: 'Slug must be a uniq',
@@ -76,7 +76,7 @@ module.exports = {
     }
 
     if (existKey) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: 'Key must be a uniq',
@@ -100,7 +100,7 @@ module.exports = {
     user.passport.push({ project, role })
     await user.save()
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       message: 'Project successfully created'
@@ -129,7 +129,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: error.details[0].message,
@@ -154,7 +154,7 @@ module.exports = {
     project.tasks.push(task)
     await project.save()
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       message: 'Task successfully created'
@@ -171,7 +171,7 @@ module.exports = {
     const user = await User.findById(userId)
 
     if (!user) {
-      return res.send({
+      return res.status(401).send({
         success: false,
         status: 401,
         errors: `User not found or invalid token`,
@@ -219,7 +219,7 @@ module.exports = {
       }
     ])
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: projects,
@@ -250,7 +250,7 @@ module.exports = {
       ]
     }).populate('members.user', ['name', 'username'])
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: project,
@@ -283,7 +283,7 @@ module.exports = {
     }).populate('members.user', ['name', 'username'])
 
     if (!project) {
-      return res.send({
+      return res.status(404).send({
         success: false,
         status: 404,
         errors: `Project not found`,
@@ -291,7 +291,7 @@ module.exports = {
       })
     }
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: project,
@@ -311,7 +311,7 @@ module.exports = {
     })
 
     if (!user) {
-      return res.send({
+      return res.status(404).send({
         success: false,
         status: 404,
         errors: `User with name: ${username} not found`,
@@ -339,7 +339,7 @@ module.exports = {
       .populate('members.role')
 
     if (!project) {
-      return res.send({
+      return res.status(404).send({
         success: false,
         status: 404,
         errors: `Project with name: ${slug} not found`,
@@ -347,7 +347,7 @@ module.exports = {
       })
     }
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: project,
@@ -380,7 +380,7 @@ module.exports = {
     const user = await User.findOne({ username })
 
     if (!user) {
-      return res.send({
+      return res.status(404).send({
         success: false,
         status: 404,
         errors: `User with name: ${username} not found`,
@@ -406,7 +406,7 @@ module.exports = {
     })
 
     if (!project) {
-      return res.send({
+      return res.status(404).send({
         success: false,
         status: 404,
         errors: `Project with name: ${slug} not found`,
@@ -530,7 +530,7 @@ module.exports = {
     // Высчитывает кол-ва страниц
     pageTotal = total < limit ? 1 : Math.ceil(total / limit)
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: tasks,
@@ -556,7 +556,7 @@ module.exports = {
     const user = await User.findOne({ username })
 
     if (!user) {
-      return res.send({
+      return res.status(404).send({
         success: false,
         status: 404,
         errors: `User with name: ${username} not found`,
@@ -582,7 +582,7 @@ module.exports = {
     })
 
     if (!project) {
-      return res.send({
+      return res.status(404).send({
         success: false,
         status: 404,
         errors: `Project with name: ${slug} not found`,
@@ -595,7 +595,7 @@ module.exports = {
     }).populate('assign', ['_id', 'name', 'username'])
 
     if (!task) {
-      return res.send({
+      return res.status(404).send({
         success: false,
         status: 404,
         errors: `Task with slug: ${slug} not found`,
@@ -603,7 +603,7 @@ module.exports = {
       })
     }
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: task,
@@ -631,7 +631,7 @@ module.exports = {
     }).lean()
 
     if (!project) {
-      return res.send({
+      return res.status(200).send({
         success: true,
         status: 200,
         data: false,
@@ -639,7 +639,7 @@ module.exports = {
       })
     }
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: true,
@@ -665,7 +665,7 @@ module.exports = {
       }
     ])
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: tasks,
@@ -687,7 +687,7 @@ module.exports = {
       .sort(sort)
       .lean()
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: projects,
@@ -716,7 +716,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: error.details[0].message,
@@ -729,7 +729,7 @@ module.exports = {
     })
 
     if (existSlug) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: 'Slug must be a uniq',
@@ -740,13 +740,13 @@ module.exports = {
     const project = await Project.findOneAndUpdate({ _id: projectId }, req.body)
 
     if (project) {
-      res.send({
+      res.status(200).send({
         success: true,
         status: 200,
         message: 'Project successfully updated'
       })
     } else {
-      res.send({
+      res.status(400).send({
         success: false,
         status: 400,
         message: 'Project not found'
@@ -773,7 +773,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: error.details[0].message,
@@ -786,7 +786,7 @@ module.exports = {
     })
 
     if (existKey) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: 'Key must be a uniq',
@@ -810,7 +810,7 @@ module.exports = {
       task.save()
     })
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       message: 'Project and tasks key changed successfully'
@@ -839,7 +839,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: error.details[0].message,
@@ -876,7 +876,7 @@ module.exports = {
 
     await project.save()
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       message: 'Members successfully added'
@@ -904,7 +904,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: error.details[0].message,
@@ -948,7 +948,7 @@ module.exports = {
 
     await project.save()
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       message: 'Members successfully removed'
@@ -972,7 +972,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: error.details[0].message,
@@ -1001,7 +1001,7 @@ module.exports = {
     )
 
     if (!project || !user) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: 'Project or user not found',
@@ -1009,7 +1009,7 @@ module.exports = {
       })
     }
 
-    return res.send({
+    return res.status(200).send({
       success: true,
       status: 200,
       message: 'User role successfully updated'
@@ -1025,7 +1025,7 @@ module.exports = {
     const project = await Project.findById(projectId)
 
     if (!project) {
-      return res.send({
+      return res.status(404).send({
         success: false,
         status: 404,
         errors: 'Project not found',
@@ -1058,7 +1058,7 @@ module.exports = {
 
     await project.remove()
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       message: 'Project successfully deleted'
@@ -1080,7 +1080,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      res.send({
+      res.status(400).send({
         success: false,
         status: 400,
         errors: error.details[0].message,
@@ -1099,7 +1099,7 @@ module.exports = {
           }
         }
       )
-      res.send({
+      res.status(200).send({
         success: true,
         status: 200,
         message: 'Project successfully set favorite'
@@ -1115,7 +1115,7 @@ module.exports = {
           }
         }
       )
-      res.send({
+      res.status(200).send({
         success: true,
         status: 200,
         message: 'Project successfully unset favorite'
@@ -1130,7 +1130,7 @@ module.exports = {
   async getProjectRoles (req, res) {
     const roles = await Role.find({})
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: roles,

@@ -16,7 +16,7 @@ module.exports = {
       if (err) {
         // Дубликат slug
         if (err.name === 'MongoError' && err.code === 11000) {
-          return res.send({
+          return res.status(409).send({
             success: false,
             status: 409,
             error: err,
@@ -24,7 +24,7 @@ module.exports = {
           })
         }
         if (err.errors.title) {
-          return res.send({
+          return res.status(409).send({
             success: false,
             status: 409,
             errors: err.errors,
@@ -32,7 +32,7 @@ module.exports = {
           })
         }
         if (err.errors.slug) {
-          return res.send({
+          return res.status(409).send({
             success: false,
             status: 409,
             errors: err.errors,
@@ -40,7 +40,7 @@ module.exports = {
           })
         }
       } else {
-        res.send({
+        res.status(200).send({
           success: true,
           status: 200,
           data: newGroup
@@ -71,7 +71,7 @@ module.exports = {
         if (err) {
           if (err.name === 'MongoError' && err.code === 11000) {
             // Дубликат slug
-            return res.send({
+            return res.status(409).send({
               success: false,
               status: 409,
               error: err.message,
@@ -79,7 +79,7 @@ module.exports = {
             })
           }
           if (err.errors.title) {
-            return res.send({
+            return res.status(409).send({
               success: false,
               status: 409,
               errors: err.errors,
@@ -87,7 +87,7 @@ module.exports = {
             })
           }
           if (err.errors.slug) {
-            return res.send({
+            return res.status(409).send({
               success: false,
               status: 409,
               errors: err.errors,
@@ -95,7 +95,7 @@ module.exports = {
             })
           }
         } else {
-          res.send({
+          res.status(200).send({
             success: true,
             status: 200,
             data: group
@@ -113,14 +113,14 @@ module.exports = {
 
     await Group.findOneAndRemove({ _id: groupId, userId }, (err, group) => {
       if (err) {
-        return res.send({
+        return res.status(400).send({
           success: false,
           status: 400,
           message: 'Something wrong'
         })
       }
       if (!group) {
-        res.send({
+        res.status(404).send({
           success: false,
           status: 404,
           message: 'Group not found'
@@ -132,13 +132,13 @@ module.exports = {
           { $pull: { groups: groupId } },
           (err, user) => {
             if (err) {
-              return res.send({
+              return res.status(400).send({
                 success: false,
                 status: 400,
                 message: 'Something wrong'
               })
             } else {
-              res.send({
+              res.status(200).send({
                 success: true,
                 status: 200,
                 message: `Group: ${group.title} is deleted`,
@@ -159,21 +159,21 @@ module.exports = {
 
     await Group.findOne({ _id: groupId, userId }, (err, group) => {
       if (err) {
-        return res.send({
+        return res.status(400).send({
           success: false,
           status: 400,
           message: 'Something wrong'
         })
       }
       if (!group) {
-        return res.send({
+        return res.status(404).send({
           success: false,
           status: 404,
           message: 'Group not found'
         })
       }
 
-      res.send({
+      res.status(200).send({
         success: true,
         status: 200,
         group
@@ -271,7 +271,7 @@ module.exports = {
       ],
       (err, groups) => {
         if (err) {
-          return res.send({
+          return res.status(400).send({
             success: false,
             status: 400,
             error: err,
@@ -280,7 +280,7 @@ module.exports = {
         }
 
         if (!groups.length) {
-          return res.send({
+          return res.status(404).send({
             success: false,
             status: 404,
             message: 'Groups not found'
@@ -298,7 +298,7 @@ module.exports = {
           data: groups
         }
 
-        res.send(output)
+        res.status(200).send(output)
       }
     )
   },
@@ -311,21 +311,21 @@ module.exports = {
 
     await Group.find({ _id: { $in: user.groupsFavorite } }, (err, groups) => {
       if (err) {
-        return res.send({
+        return res.status(400).send({
           success: false,
           status: 400,
           message: 'Something wrong'
         })
       }
       if (!groups.length) {
-        return res.send({
+        return res.status(404).send({
           success: false,
           status: 404,
           message: 'Groups not found'
         })
       }
 
-      res.send({
+      res.status(200).send({
         success: true,
         status: 200,
         data: groups
@@ -342,14 +342,14 @@ module.exports = {
 
     await Group.findOne({ _id: groupId, userId }, (err, group) => {
       if (err) {
-        return res.send({
+        return res.status(400).send({
           success: false,
           status: 400,
           message: 'Something wrong'
         })
       }
       if (!group) {
-        return res.send({
+        return res.status(404).send({
           success: false,
           status: 404,
           message: 'Group not found'
@@ -362,13 +362,13 @@ module.exports = {
           { $addToSet: { groupsFavorite: group.id } },
           (err, user) => {
             if (err) {
-              res.send({
+              res.status(400).send({
                 success: false,
                 status: 400,
                 message: 'Something wrong'
               })
             } else {
-              res.send({
+              res.status(200).send({
                 success: true,
                 status: 200,
                 message: 'Group set as favorite'
@@ -382,13 +382,13 @@ module.exports = {
           { $pull: { groupsFavorite: group._id } },
           (err, user) => {
             if (err) {
-              res.send({
+              res.status(400).send({
                 success: false,
                 status: 400,
                 message: 'Something wrong'
               })
             } else {
-              res.send({
+              res.status(200).send({
                 success: true,
                 status: 200,
                 message: 'Group unset as favorite'

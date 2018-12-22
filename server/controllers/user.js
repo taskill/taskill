@@ -27,7 +27,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: error.details[0].message,
@@ -40,7 +40,7 @@ module.exports = {
     try {
       const user = await newUser.save()
 
-      res.send({
+      res.status(200).send({
         success: true,
         status: 200,
         message: 'Congratulations with the registration'
@@ -77,7 +77,7 @@ module.exports = {
     } catch (err) {
       if (err.name === 'MongoError' && err.code === 11000) {
         // Дубликат email
-        return res.send({
+        return res.status(409).send({
           success: false,
           status: 409,
           errors: {
@@ -99,7 +99,7 @@ module.exports = {
 
       if (!user) {
         res.clearCookie('token')
-        return res.send({
+        return res.status(401).send({
           success: false,
           status: 401,
           errors: {
@@ -117,7 +117,7 @@ module.exports = {
         const token = user.generateAuthToken()
 
         res.cookie('token', token)
-        res.send({
+        res.status(200).send({
           success: true,
           status: 200,
           data: {
@@ -130,7 +130,7 @@ module.exports = {
         })
       } else {
         res.clearCookie('token')
-        res.send({
+        res.status(401).send({
           success: false,
           status: 401,
           errors: {
@@ -143,7 +143,7 @@ module.exports = {
       }
     } catch (err) {
       res.clearCookie('token')
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         message: 'There were problems on sign in:'
@@ -155,7 +155,7 @@ module.exports = {
    */
   logout (req, res, next) {
     res.clearCookie('token')
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       message: 'Successfully log out'
@@ -177,7 +177,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      return res.send({
+      return res.status(401).send({
         success: false,
         status: 401,
         errors: error.details[0].message,
@@ -189,7 +189,7 @@ module.exports = {
       const user = await User.findOne({ email: req.body.email })
 
       if (!user) {
-        return res.send({
+        return res.status(404).send({
           success: false,
           status: 404,
           errors: {
@@ -243,7 +243,7 @@ module.exports = {
         console.log('Message sent: %s', info.messageId)
       })
 
-      res.send({
+      res.status(200).send({
         success: true,
         status: 200,
         message: `The reset password link was successfully sent to ${
@@ -251,7 +251,7 @@ module.exports = {
         }`
       })
     } catch (err) {
-      return res.json({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: err,
@@ -267,14 +267,14 @@ module.exports = {
 
     jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
       if (err) {
-        res.send({
+        res.status(401).send({
           success: false,
           status: 401,
           message: 'Password link has expired'
         })
       } else {
         res.clearCookie('token')
-        res.send({
+        res.status(200).send({
           success: true,
           status: 200,
           data: decode
@@ -297,7 +297,7 @@ module.exports = {
     const { error } = Joi.validate(req.body, schema)
 
     if (error) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         errors: error.details[0].message,
@@ -311,13 +311,13 @@ module.exports = {
       user.password = newPassword
       await user.save()
 
-      res.send({
+      res.status(200).send({
         success: true,
         status: 200,
         message: 'Password updated successfully'
       })
     } catch (err) {
-      return res.send({
+      return res.status(400).send({
         success: false,
         status: 400,
         message: 'Something wrong'
@@ -358,7 +358,7 @@ module.exports = {
       .select('projects projectsFavorite name username email isAdmin passport')
       .lean()
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: users,
@@ -377,7 +377,7 @@ module.exports = {
       .select('projects projectsFavorite name username email isAdmin passport')
       .lean()
 
-    res.send({
+    res.status(200).send({
       success: true,
       status: 200,
       data: user,
