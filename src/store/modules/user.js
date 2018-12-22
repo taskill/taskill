@@ -35,6 +35,21 @@ export default {
           message: 'Invalid Login or password'
         })
       }
+    },
+    /**
+     * Fetch user by id and commit to state
+     * @param {string} id - user id
+     */
+    async getUserById ({ commit }, payload) {
+      if (payload.id) {
+        const id = payload.id
+        try {
+          const res = await getUserById({ id })
+          commit('SET_USER', res.data.data)
+        } catch (err) {}
+      } else {
+        console.warn('Parameter `id` is required')
+      }
     }
   }
 }
