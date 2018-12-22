@@ -27,7 +27,6 @@ export default {
           email: payload.email,
           password: payload.password
         })
-        commit('SET_USER', res.data.data)
         auth.setLocalStorage(res.data)
         router.push('/')
       } catch (err) {
