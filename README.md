@@ -11,7 +11,9 @@ The goal of this project is to create an open source independent task manager on
 Clone the repo and install client and server parts. Also on the local machine must be installed mongoDB
 
 ```bash
+# Client
 npm i
+# Server
 cd server
 npm i
 ```
