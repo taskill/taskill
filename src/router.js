@@ -12,7 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: DefaultTheme
+      component: DefaultTheme,
+      meta: { requiresAuth: true }
     },
     {
       path: '/signin',
@@ -31,6 +32,7 @@ export default new Router({
     },
     {
       path: '*',
+      meta: { requiresAuth: true },
       component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue')
     }
   ]
