@@ -1,4 +1,5 @@
-require('dotenv').config()
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '.env') })
 const express = require('express')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
@@ -24,9 +25,14 @@ app.use(
   })
 )
 
+app.use(express.static(`${__dirname}/../../dist`))
+
 // Маршрутизация
 app.use('/api/projects', projects)
 app.use('/api/users', users)
+app.use('*', (req, res) => {
+  res.sendFile(`${__dirname}/../../dist/index.html`)
+})
 
 // Старт сервера
 app.listen(process.env.PORT, () => {
