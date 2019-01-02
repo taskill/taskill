@@ -15,7 +15,7 @@ The goal of this project is to create an open source independent task manager on
 Clone the repo, setup the env variables and run
 
 ```bash
-(cd docker/prod && docker-compose up --build -d )
+(cd docker/prod && docker-compose up --build -d)
 ```
 
 Go to the `http://localhost` on local machine or your domain address on server
