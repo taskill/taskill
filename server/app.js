@@ -25,16 +25,11 @@ app.use(
   })
 )
 
-app.use(express.static(`${__dirname}/../../dist`))
-
 // Маршрутизация
 app.use('/api/projects', projects)
 app.use('/api/users', users)
-app.use('*', (req, res) => {
-  res.sendFile(`${__dirname}/../../dist/index.html`)
-})
 
 // Старт сервера
-app.listen(process.env.PORT, () => {
-  console.log(`Server start on port ${process.env.PORT}`)
+app.listen(process.env.API_PORT, () => {
+  console.log(`Server start on port ${process.env.API_PORT}`)
 })
