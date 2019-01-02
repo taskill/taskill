@@ -1,4 +1,10 @@
 module.exports = {
+  devServer: {
+    host: process.env.VUE_APP_HOST,
+    hot: true,
+    disableHostCheck: true,
+    port: process.env.VUE_APP_PORT
+  },
   css: {
     loaderOptions: {
       sass: {

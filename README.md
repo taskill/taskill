@@ -6,44 +6,64 @@ The goal of this project is to create an open source independent task manager on
 
 <img src="./screenshot.png">
 
-## Install
+## Use
 
-Clone the repo and install client and server parts. Also on the local machine must be installed mongoDB
+> Docker must be installed
+
+### Production
+
+Clone the repo, setup the env variables and run
+
+```bash
+(cd docker/prod && docker-compose up --build -d )
+```
+
+Go to the `http://localhost` on local machine or your domain address on server
+
+**Env variables**
 
 ```bash
 # Client
-npm i
+VUE_APP_SERVER_API= # service URI API, example: http://yourdomain.com/api or http://localhost to local use
 # Server
-cd server
-npm i
+API_PORT= # service server port, example: 3000, if other, you must be setup proxy nginx
+DEBUG= # express debug mode
+CLIENT_URI= # service client URI for CORS, example: http://yourdomain.com, or http://localhost to local use
+MONGO_URI= # service mongo URI, exmaple mongodb://mongo:27017/taskill, (mongo - service DNS)
+SECRET_KEY= # random string as salt to generate token
+MAIL_HOST= # SMTP server email client
+MAIL_PORT= # email port
+MAIL_USER= # email login
+MAIL_PASS= # email password
 ```
 
-Fill in the client and server environment variables
+### Development
 
-### Example
-
-`server/.env`
+Clone the repo, setup the env variables and run
 
 ```bash
-# Server
-PORT=3000 # start server on port 3000 - http://localhost:3000/, http://localhost:3000/api
-DEBUG=false # express debug mode
-CLIENT_URI=http://localhost:8080 # url client for CORS permission
-MONGO_URI=mongodb://localhost/taskill # mongo url
-SECRET_KEY=KnVSbaxCH3pWSexCsb # random string as salt to generate token
-MAIL_HOST=smtp.yandex.ru # smtp server email client
-MAIL_PORT=465 # email port
-MAIL_USER=john@dohn.com # email login
-MAIL_PASS=password # email password
-
+(cd docker/dev && docker-compose up --build -d)
 ```
 
-`.env`
+**Env example**
+
+`docker/dev/.env`
 
 ```bash
 # Client
-PORT=8080 # start client on port 8080 - http://localhost:8080
-VUE_APP_SERVER_API=http://localhost:3000/api
+VUE_APP_PORT= # client port, example 4000
+VUE_APP_HOST= # must be 0.0.0.0
+VUE_APP_SERVER_API= # service URI API, for dev example: http://localhost:3000/api, port must be equal API_PORT
+# Server
+API_PORT= # service server port, example: 3000
+DEBUG= # express debug mode
+CLIENT_URI= # service client URI for CORS, for dev example: http://localhost:4000, port must be equal VUE_APP_PORT
+MONGO_URI= # service mongo URI, example mongodb://mongo:27017/taskill, (mongo - service DNS)
+SECRET_KEY= # random string as salt to generate token
+MAIL_HOST= # SMTP server email client
+MAIL_PORT= # email port
+MAIL_USER= # email login
+MAIL_PASS= # email password
 ```
 
 ## Launch

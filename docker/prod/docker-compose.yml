@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ../../
+      dockerfile: ./docker/prod/web/Dockerfile
+      args:
+        - VUE_APP_SERVER_API=${VUE_APP_SERVER_API}
+    image: taskill_web
+    container_name: taskill_web
+    ports:
+      - '80:80'
+    networks:
+      - taskill-prod
+    links:
+      - api
+  api:
+    build:
+      context: ../../
+      dockerfile: ./docker/prod/api/Dockerfile
+    image: taskill_api
+    container_name: taskill_api
+    env_file: ./.env
+    command: >
+      sh -c "../bin/wait-for-it.sh mongo:27017 -- echo "===\ mongo\ is\ up\ ===" && nodemon app.js"
+    ports:
+      - '${API_PORT}:${API_PORT}'
+    restart: always
+    volumes:
+      - ../../server/:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - taskill-prod
+    links:
+      - mongo
+  mongo:
+    container_name: taskill_db
+    image: mongo
+    volumes:
+      - ../../data:/data/db
+    networks:
+      - taskill-prod
+    ports:
+      - '27100:27017'
+
+networks:
+  taskill-prod:
