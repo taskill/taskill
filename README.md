@@ -66,17 +66,6 @@ MAIL_USER= # email login
 MAIL_PASS= # email password
 ```
 
-## Launch
-
-```bash
-# Client
-npm run serve
-# Server
-cd server
-npm start
-
-```
-
 ## Roadmap
 
 ### Client
