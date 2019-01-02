@@ -45,6 +45,8 @@ Clone the repo, setup the env variables and run
 (cd docker/dev && docker-compose up --build -d)
 ```
 
+Go to the `http://localhost:VUE_APP_PORT` on local machine
+
 **Env example**
 
 `docker/dev/.env`
