@@ -1,7 +1,7 @@
 <template>
   <div class="default-theme">
-    <AppSidebar />
-    <AppMain />
+    <app-sidebar />
+    <app-main />
   </div>
 </template>
 

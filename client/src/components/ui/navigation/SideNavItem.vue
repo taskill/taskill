@@ -1,16 +1,16 @@
 <template>
-  <RouterLink
+  <router-link
     class="side-nav__item"
     :to="to"
   >
     <span class="side-nav__item-inner">
-      <SvgIcon
+      <svg-icon
         v-if="icon"
         :name="iconName"
       />
       {{ name }}
     </span>
-  </RouterLink>
+  </router-link>
 </template>
 
 <script>

@@ -8,9 +8,9 @@
         Page not found
       </div>
       <br>Don't worry its ok, just go
-      <RouterLink to="/">
+      <router-link to="/">
         home
-      </RouterLink>
+      </router-link>
     </div>
   </div>
 </template>

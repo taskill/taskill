@@ -2,30 +2,30 @@
   <div class="login">
     <div class="login__inner">
       <div class="logo">
-        <LogoFull />
+        <logo-full />
       </div>
       <div class="login__form">
-        <SignIn v-if="$route.path === '/signin'" />
-        <SignUp v-if="$route.path === '/signup'" />
-        <Reset v-if="$route.path === '/reset'" />
+        <sign-in v-if="$route.path === '/signin'" />
+        <sign-up v-if="$route.path === '/signup'" />
+        <reset v-if="$route.path === '/reset'" />
       </div>
       <div class="login__sub">
         <span v-if="$route.path === '/signin'">
           Not a member?
-          <RouterLink to="/signup">
+          <router-link to="/signup">
             Sign up now
-          </RouterLink>
+          </router-link>
         </span>
         <span v-if="$route.path === '/signup'">
           Have a account?
-          <RouterLink to="/signin">
+          <router-link to="/signin">
             Sign in
-          </RouterLink>
+          </router-link>
         </span>
         <span v-if="$route.path === '/reset'">
-          <RouterLink to="/signin">
+          <router-link to="/signin">
             Back to login
-          </RouterLink>
+          </router-link>
         </span>
       </div>
     </div>

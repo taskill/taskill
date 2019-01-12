@@ -2,13 +2,13 @@
   <div class="sidebar">
     <div class="sidebar__inner">
       <div class="logo">
-        <TaskillLogoText />
+        <taskill-logo-text />
       </div>
     </div>
     <div class="sidebar__panel">
       <div class="item">
         <div class="logo">
-          <TaskillLogo />
+          <taskill-logo />
         </div>
       </div>
       <div class="item">
@@ -16,14 +16,14 @@
           class="add-new"
           @click="toggleSideMenu"
         >
-          <SvgIcon name="plus" />
+          <svg-icon name="plus" />
         </div>
       </div>
       <div class="item">
         <div class="user-profile" />
       </div>
     </div>
-    <SidebarPanelMenu
+    <sidebar-panel-menu
       :show="showSideMenu"
       @close="toggleSideMenu"
     />

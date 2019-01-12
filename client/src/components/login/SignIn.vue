@@ -1,32 +1,32 @@
 <template>
   <div class="sign-in">
     <h2>Sign in</h2>
-    <ElForm>
-      <ElFormItem label="Email">
-        <ElInput v-model="email" />
-      </ElFormItem>
-      <ElFormItem>
+    <el-form>
+      <el-form-item label="Email">
+        <el-input v-model="email" />
+      </el-form-item>
+      <el-form-item>
         <template name="label">
           Password
-          <RouterLink to="/reset">
+          <router-link to="/reset">
             forgot?
-          </RouterLink>
+          </router-link>
         </template>
-        <ElInput
+        <el-input
           v-model="password"
           type="password"
         />
-      </ElFormItem>
-      <ElFormItem>
-        <ElButton
+      </el-form-item>
+      <el-form-item>
+        <el-button
           type="primary"
           style="width:100%;"
           @click="signIn"
         >
           Sign in
-        </ElButton>
-      </ElFormItem>
-    </ElForm>
+        </el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 

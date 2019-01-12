@@ -1,22 +1,22 @@
 <template>
   <div class="sing-up">
     <h2>Sign up</h2>
-    <ElForm>
-      <ElFormItem label="Email">
-        <ElInput />
-      </ElFormItem>
-      <ElFormItem label="Password">
-        <ElInput />
-      </ElFormItem>
-      <ElFormItem>
-        <ElButton
+    <el-form>
+      <el-form-item label="Email">
+        <el-input />
+      </el-form-item>
+      <el-form-item label="Password">
+        <el-input />
+      </el-form-item>
+      <el-form-item>
+        <el-button
           type="primary"
           style="width:100%;"
         >
           Sign up
-        </ElButton>
-      </ElFormItem>
-    </ElForm>
+        </el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="side-menu-wrapper">
-    <Transition name="slide-to-left">
+    <transition name="slide-to-left">
       <div
         v-if="show"
         class="side-menu"
@@ -10,11 +10,11 @@
             class="side-menu__close"
             @click="$emit('close')"
           >
-            <SvgIcon name="arrow-left" />
+            <svg-icon name="arrow-left" />
           </div>
-          <SideNav>
-            <SideNavGroup name="Create a new">
-              <SideNavItem
+          <side-nav>
+            <side-nav-group name="Create a new">
+              <side-nav-item
                 v-for="i in navigation.sideMenu"
                 :key="i.name"
                 :name="i.name"
@@ -22,18 +22,18 @@
                 :icon-name="i.icon"
                 :to="i.path"
               />
-            </SideNavGroup>
-          </SideNav>
+            </side-nav-group>
+          </side-nav>
         </div>
       </div>
-    </Transition>
-    <Transition name="fade">
+    </transition>
+    <transition name="fade">
       <div
         v-if="show"
         class="overlay"
         @click="$emit('close')"
       />
-    </Transition>
+    </transition>
   </div>
 </template>
 
