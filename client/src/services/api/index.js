@@ -5,6 +5,11 @@ export const signIn = body => {
   return http.post(url, body)
 }
 
+export const signUp = body => {
+  let url = '/users/signup'
+  return http.post(url, body)
+}
+
 export const getUserById = params => {
   let id = params.id
   let url = `/users/${id}`

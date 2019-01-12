@@ -1,4 +1,4 @@
-import { signIn, getUserById } from '../../services/api'
+import { signIn, signUp, getUserById } from '../../services/api'
 import auth from '../../services/auth'
 import router from '../../router'
 
@@ -34,6 +34,31 @@ export default {
           title: 'Error',
           message: 'Invalid Login or password'
         })
+      }
+    },
+    /**
+     * Sign up and if success sign in
+     * @param {string} name - name
+     * @param {string} username - username
+     * @param {string} email - user email
+     * @param {string} password - user password
+     * @param {object} vm - vue instance
+     */
+    async signUp ({ dispatch }, payload) {
+      try {
+        await signUp({
+          name: payload.name,
+          username: payload.username,
+          email: payload.email,
+          password: payload.password
+        })
+        payload.vm.$notify.success({
+          title: 'Success',
+          message: 'Congratulations with the registration'
+        })
+        dispatch('signIn', { email: payload.email, password: payload.password })
+      } catch (err) {
+        console.warn(err)
       }
     },
     /**
