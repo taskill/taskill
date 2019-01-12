@@ -1,29 +1,39 @@
 <template>
   <div class="side-menu-wrapper">
-    <transition name="slide-to-left">
-      <div class="side-menu" v-if="show">
+    <Transition name="slide-to-left">
+      <div
+        v-if="show"
+        class="side-menu"
+      >
         <div class="side-menu__body">
-          <div class="side-menu__close" @click="$emit('close')">
-            <svg-icon name="arrow-left"/>
+          <div
+            class="side-menu__close"
+            @click="$emit('close')"
+          >
+            <SvgIcon name="arrow-left" />
           </div>
-          <side-nav>
-            <side-nav-group name="Create a new">
-              <side-nav-item
+          <SideNav>
+            <SideNavGroup name="Create a new">
+              <SideNavItem
                 v-for="i in navigation.sideMenu"
                 :key="i.name"
                 :name="i.name"
                 :icon="true"
                 :icon-name="i.icon"
                 :to="i.path"
-              ></side-nav-item>
-            </side-nav-group>
-          </side-nav>
+              />
+            </SideNavGroup>
+          </SideNav>
         </div>
       </div>
-    </transition>
-    <transition name="fade">
-      <div class="overlay" v-if="show" @click="$emit('close')"></div>
-    </transition>
+    </Transition>
+    <Transition name="fade">
+      <div
+        v-if="show"
+        class="overlay"
+        @click="$emit('close')"
+      />
+    </Transition>
   </div>
 </template>
 

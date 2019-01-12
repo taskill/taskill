@@ -2,25 +2,31 @@
   <div class="sidebar">
     <div class="sidebar__inner">
       <div class="logo">
-        <taskill-logo-text/>
+        <TaskillLogoText />
       </div>
     </div>
     <div class="sidebar__panel">
       <div class="item">
         <div class="logo">
-          <taskill-logo/>
+          <TaskillLogo />
         </div>
       </div>
       <div class="item">
-        <div class="add-new" @click="toggleSideMenu">
-          <svg-icon name="plus"/>
+        <div
+          class="add-new"
+          @click="toggleSideMenu"
+        >
+          <SvgIcon name="plus" />
         </div>
       </div>
       <div class="item">
-        <div class="user-profile"></div>
+        <div class="user-profile" />
       </div>
     </div>
-    <sidebar-panel-menu :show="showSideMenu" @close="toggleSideMenu"/>
+    <SidebarPanelMenu
+      :show="showSideMenu"
+      @close="toggleSideMenu"
+    />
   </div>
 </template>
 

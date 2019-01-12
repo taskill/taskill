@@ -1,7 +1,9 @@
 <template>
   <div class="side-nav-group">
-    <div class="side-nav-group__name">{{ name }}</div>
-    <slot></slot>
+    <div class="side-nav-group__name">
+      {{ name }}
+    </div>
+    <slot />
   </div>
 </template>
 
@@ -10,7 +12,10 @@ export default {
   name: 'SideNavGroup',
 
   props: {
-    name: String
+    name: {
+      type: String,
+      default: undefined
+    }
   },
 
   data () {

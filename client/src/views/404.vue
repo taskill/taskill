@@ -1,10 +1,16 @@
 <template>
   <div class="wrap">
     <div class="error error--404">
-      <div class="error__emoji">{{ random }}</div>
-      <div class="error__text">Page not found</div>
+      <div class="error__emoji">
+        {{ random }}
+      </div>
+      <div class="error__text">
+        Page not found
+      </div>
       <br>Don't worry its ok, just go
-      <router-link to="/">home</router-link>
+      <RouterLink to="/">
+        home
+      </RouterLink>
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <nav class="side-nav">
-    <slot></slot>
+    <slot />
   </nav>
 </template>
 
@@ -9,7 +9,10 @@ export default {
   name: 'SidebarNav',
 
   props: {
-    nav: Array,
+    nav: {
+      type: Array,
+      default: () => []
+    },
     icon: {
       type: Boolean,
       default: false

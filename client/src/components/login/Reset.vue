@@ -1,14 +1,19 @@
 <template>
   <div class="reset">
     <h2>Reset password</h2>
-    <el-form>
-      <el-form-item label="Email">
-        <el-input></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" style="width:100%;">Reset password</el-button>
-      </el-form-item>
-    </el-form>
+    <ElForm>
+      <ElFormItem label="Email">
+        <ElInput />
+      </ElFormItem>
+      <ElFormItem>
+        <ElButton
+          type="primary"
+          style="width:100%;"
+        >
+          Reset password
+        </ElButton>
+      </ElFormItem>
+    </ElForm>
   </div>
 </template>
 

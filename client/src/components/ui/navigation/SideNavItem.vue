@@ -1,10 +1,16 @@
 <template>
-  <router-link class="side-nav__item" :to="to">
+  <RouterLink
+    class="side-nav__item"
+    :to="to"
+  >
     <span class="side-nav__item-inner">
-      <svg-icon v-if="icon" :name="iconName"/>
+      <SvgIcon
+        v-if="icon"
+        :name="iconName"
+      />
       {{ name }}
     </span>
-  </router-link>
+  </RouterLink>
 </template>
 
 <script>
@@ -22,9 +28,18 @@ export default {
       type: Boolean,
       default: false
     },
-    name: String,
-    to: String,
-    iconName: String
+    name: {
+      type: String,
+      default: undefined
+    },
+    to: {
+      type: String,
+      default: undefined
+    },
+    iconName: {
+      type: String,
+      default: undefined
+    }
   },
 
   data () {
