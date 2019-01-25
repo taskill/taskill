@@ -1,4 +1,11 @@
 export default {
+  main: [
+    {
+      name: 'Projects',
+      icon: 'briefcase',
+      path: '/projects'
+    }
+  ],
   sideMenu: [
     {
       name: 'Task',

@@ -4,6 +4,18 @@
       <div class="logo">
         <taskill-logo-text />
       </div>
+      <side-nav>
+        <side-nav-group name="Main">
+          <side-nav-item
+            v-for="i in navigation.main"
+            :key="i.name"
+            :name="i.name"
+            :icon="true"
+            :icon-name="i.icon"
+            :to="i.path"
+          />
+        </side-nav-group>
+      </side-nav>
     </div>
     <div class="sidebar__panel">
       <div class="item">
@@ -34,7 +46,8 @@
 import SidebarPanelMenu from './SidebarPanelMenu.vue'
 import TaskillLogo from '@/assets/images/taskill-logo-icon-o.svg'
 import TaskillLogoText from '@/assets/images/taskill-logo-text.svg'
-import { SvgIcon } from '@/components/ui'
+import { SvgIcon, SideNav, SideNavItem, SideNavGroup } from '@/components/ui'
+import navigation from '@/navigation'
 
 export default {
   name: 'Sidebar',
@@ -43,12 +56,16 @@ export default {
     SidebarPanelMenu,
     TaskillLogo,
     TaskillLogoText,
-    SvgIcon
+    SvgIcon,
+    SideNav,
+    SideNavItem,
+    SideNavGroup
   },
 
   data () {
     return {
-      showSideMenu: false
+      showSideMenu: false,
+      navigation
     }
   },
 
