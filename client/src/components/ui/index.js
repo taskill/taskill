@@ -1,6 +1,7 @@
-import SvgIcon from '../ui/icon/SvgIcon'
-import SideNav from '../ui/navigation/SideNav'
-import SideNavItem from '../ui/navigation/SideNavItem'
-import SideNavGroup from '../ui/navigation/SideNavGroup'
+import SvgIcon from './icon/SvgIcon'
+import SideNav from './navigation/SideNav'
+import SideNavItem from './navigation/SideNavItem'
+import SideNavGroup from './navigation/SideNavGroup'
+import Quill from './quill/Quill'
 
-export { SvgIcon, SideNav, SideNavItem, SideNavGroup }
+export { SvgIcon, SideNav, SideNavItem, SideNavGroup, Quill }
