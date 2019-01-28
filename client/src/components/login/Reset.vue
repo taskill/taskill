@@ -1,7 +1,7 @@
 <template>
   <div class="reset">
     <h2>Reset password</h2>
-    <el-form>
+    <el-form size="default">
       <el-form-item label="Email">
         <el-input />
       </el-form-item>

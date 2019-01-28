@@ -1,7 +1,7 @@
 <template>
   <div class="sing-up">
     <h2>Sign up</h2>
-    <el-form>
+    <el-form size="default">
       <el-form-item label="Name">
         <el-input v-model="name" />
       </el-form-item>
