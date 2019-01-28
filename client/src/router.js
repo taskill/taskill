@@ -20,7 +20,25 @@ const router = new Router({
     {
       path: '/',
       component: DefaultTheme,
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true },
+      children: [
+        {
+          path: 'projects',
+          meta: { title: 'Projects', requiresAuth: true },
+          component: () =>
+            import(/* webpackChunkName: "Projects" */ '@/views/project/Projects.vue')
+        },
+        {
+          path: 'projects/new',
+          meta: {
+            title: 'Create a project',
+            description: 'A project is a collection of several tasks',
+            requiresAuth: true
+          },
+          component: () =>
+            import(/* webpackChunkName: "Projects" */ '@/views/project/ProjectCreate.vue')
+        }
+      ]
     },
     {
       path: '/signin',
