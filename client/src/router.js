@@ -83,4 +83,41 @@ router.beforeEach(async (to, from, next) => {
   }
 })
 
+router.beforeResolve((to, from, next) => {
+  const matched = router.getMatchedComponents(to)
+  const prevMatched = router.getMatchedComponents(from)
+
+  // Проверка на ранее не отрендереного компонента
+  // Сравниваем два компонента, пока они не будут отличаться
+  let diffed = false
+  const activated = matched.filter((c, i) => {
+    return diffed || (diffed = prevMatched[i] !== c)
+  })
+
+  if (!activated.length) {
+    return next()
+  }
+
+  // Запуск прогресс бара
+  NProgress.start()
+
+  // Получить все promise из компонентов в asyncData и дождаться их resolve
+  Promise.all(
+    activated.map(c => {
+      // Если у компонента есть опция asyncData
+      if (c.asyncData) {
+        // Вызывать у компонента asyncData и передать в него store и to из роута
+        // и вернуть promise
+        return c.asyncData({ store, route: to })
+      }
+    })
+  )
+    .then(() => {
+      // Остановка прогресс бара
+      NProgress.done()
+      next()
+    })
+    .catch(next)
+})
+
 export default router
