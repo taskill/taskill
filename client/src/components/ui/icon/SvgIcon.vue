@@ -5,6 +5,7 @@
     :width="width"
     :height="height"
     viewBox="0 0 24 24"
+    @click="$emit('click')"
     v-html="icon"
   />
 </template>
