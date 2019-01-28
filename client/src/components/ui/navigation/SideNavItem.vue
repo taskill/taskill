@@ -3,7 +3,10 @@
     class="side-nav__item"
     :to="to"
   >
-    <span class="side-nav__item-inner">
+    <span
+      class="side-nav__item-inner"
+      @click="$emit('click')"
+    >
       <svg-icon
         v-if="icon"
         :name="iconName"
