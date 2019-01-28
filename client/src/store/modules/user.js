@@ -73,7 +73,7 @@ export default {
           commit('SET_USER', res.data.data)
         } catch (err) {}
       } else {
-        console.warn('Parameter `id` is required')
+        throw new Error('Parameter `id` is required')
       }
     }
   }
