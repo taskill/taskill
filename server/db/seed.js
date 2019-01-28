@@ -10,11 +10,24 @@ const { timesAsync } = require('../utils/helper')
 const User = require('../models/user')
 const Project = require('../models/project')
 const Task = require('../models/task')
+const Role = require('../models/role')
 
 async function seed () {
   await User.collection.drop()
   await Project.collection.drop()
   await Task.collection.drop()
+
+  // Создаем роли
+  const roles = ['admin', 'manager']
+
+  roles.forEach(async i => {
+    const role = new Role({
+      id: i,
+      name: i
+    })
+
+    await role.save()
+  })
 
   // Создаем админа
   const user = new User({
