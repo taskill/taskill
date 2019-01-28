@@ -62,7 +62,7 @@
 <script>
 import { Form, FormItem, Input, ColorPicker, Button } from 'element-ui'
 import { Quill } from '@/components/ui'
-import { sluggify } from '@/helpers/utils'
+import { sluggify } from '@/utils'
 import randomcolor from 'randomcolor'
 
 export default {
