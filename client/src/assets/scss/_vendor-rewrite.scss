@@ -1,0 +1,14 @@
+/*------------------------------------*/
+/*  Element UI  */
+/*------------------------------------*/
+.el-tag {
+  transition: all 0s;
+  &.default {
+    background: #fff;
+    color: $color-text;
+    border-color: $color-grey-2;
+  }
+  &.bold {
+    font-weight: 600;
+  }
+}
