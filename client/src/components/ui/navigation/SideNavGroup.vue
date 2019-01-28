@@ -29,6 +29,9 @@ export default {
 <style lang="scss">
 .side-nav-group {
   color: $color-grey-3;
+  + .side-nav-group {
+     margin-top: 20px;
+  }
   &__name {
     margin-bottom: 10px;
     padding: 0 20px;
