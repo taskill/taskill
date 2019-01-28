@@ -21,6 +21,7 @@
                 :icon="true"
                 :icon-name="i.icon"
                 :to="i.path"
+                @click="$emit('close')"
               />
             </side-nav-group>
           </side-nav>
