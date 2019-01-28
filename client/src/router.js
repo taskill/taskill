@@ -3,8 +3,13 @@ import Router from 'vue-router'
 import DefaultTheme from './components/layouts/Default'
 import auth from './services/auth'
 import store from './store'
+import NProgress from 'nprogress'
 
 Vue.use(Router)
+
+NProgress.configure({
+  showSpinner: false
+})
 
 const router = new Router({
   mode: 'history',
