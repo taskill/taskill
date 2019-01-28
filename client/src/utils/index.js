@@ -29,3 +29,13 @@ export const sluggify = (s) => {
  * @param {string} string - string to acronym
  * @param {number} maxLetter - max letter acronym
  */
+export const toAcronym = (string, maxLetter) => {
+  const arr = string.split(' ')
+  let acronym = ''
+
+  arr.forEach((item, index) => {
+    acronym += arr[index].charAt(0).toUpperCase()
+  })
+
+  return acronym.slice(0, maxLetter)
+}
