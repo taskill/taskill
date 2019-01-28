@@ -39,3 +39,21 @@ export const toAcronym = (string, maxLetter) => {
 
   return acronym.slice(0, maxLetter)
 }
+/**
+ * Get contrast color by YIQ model
+ * @param {string} hex - HEX color
+ * @see https://ru.wikipedia.org/wiki/YIQ
+ */
+export const contrast = hex => {
+  if (!hex) return console.error('HEX color is required')
+
+  hex = hex.replace(/#/, '')
+
+  const r = Number(hex.substr(0, 2), 16)
+  const g = Number(hex.substr(2, 2), 16)
+  const b = Number(hex.substr(4, 2), 16)
+
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000
+
+  return yiq >= 180 ? 'dark' : 'light'
+}
