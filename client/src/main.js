@@ -5,7 +5,6 @@ import store from './store'
 import { Loading, Message, MessageBox, Notification } from 'element-ui'
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
-import 'element-ui/lib/theme-chalk/index.css'
 import './assets/scss/style.scss'
 
 Vue.config.productionTip = false
