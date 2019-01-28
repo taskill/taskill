@@ -15,6 +15,9 @@
             :to="i.path"
           />
         </side-nav-group>
+        <side-nav-group name="Favorite projects">
+          <favorite-project-list />
+        </side-nav-group>
       </side-nav>
     </div>
     <div class="sidebar__panel">
@@ -46,7 +49,7 @@
 import SidebarPanelMenu from './SidebarPanelMenu.vue'
 import TaskillLogo from '@/assets/images/taskill-logo-icon-o.svg'
 import TaskillLogoText from '@/assets/images/taskill-logo-text.svg'
-import { SvgIcon, SideNav, SideNavItem, SideNavGroup } from '@/components/ui'
+import { SvgIcon, SideNav, SideNavItem, SideNavGroup, FavoriteProjectList } from '@/components/ui'
 import navigation from '@/navigation'
 
 export default {
@@ -59,7 +62,8 @@ export default {
     SvgIcon,
     SideNav,
     SideNavItem,
-    SideNavGroup
+    SideNavGroup,
+    FavoriteProjectList
   },
 
   data () {
