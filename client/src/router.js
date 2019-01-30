@@ -33,7 +33,12 @@ const router = new Router({
           meta: {
             title: 'Create a project',
             description: 'A project is a collection of several tasks',
-            requiresAuth: true
+            requiresAuth: true,
+            breadcrumbs: [
+              { name: 'Projects', link: '/projects' },
+              { name: 'New', link: '/projects/new' }
+            ]
+
           },
           component: () =>
             import(/* webpackChunkName: "Projects" */ '@/views/project/ProjectCreate.vue')
