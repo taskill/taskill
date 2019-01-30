@@ -23,11 +23,11 @@ export default {
     },
     width: {
       type: [String, Number],
-      default: 24
+      default: 18
     },
     height: {
       type: [String, Number],
-      default: 24
+      default: 18
     }
   },
 
