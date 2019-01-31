@@ -4,6 +4,7 @@ import SideNavItem from './navigation/SideNavItem'
 import SideNavGroup from './navigation/SideNavGroup'
 import FavoriteProjectList from './navigation/FavoriteProjectList'
 import Breadcrumbs from './breadcrumbs/Breadcrumbs'
+import Search from './search/Search'
 import Quill from './quill/Quill'
 
 export {
@@ -13,5 +14,6 @@ export {
   SideNavGroup,
   FavoriteProjectList,
   Breadcrumbs,
+  Search,
   Quill
 }
