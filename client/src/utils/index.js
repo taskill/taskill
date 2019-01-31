@@ -57,3 +57,35 @@ export const contrast = hex => {
 
   return yiq >= 180 ? 'dark' : 'light'
 }
+/**
+ * Throttle - промежуток времени в котором будет
+ * вызван один раз callback
+ * @param {function} cb - callback
+ * @param {number} limit - промежуток времени в котором будет
+ * вызван один раз callback
+ */
+export const throttle = (cb, limit) => {
+  let wait = false
+  return function () {
+    if (!wait) {
+      cb.call()
+      wait = true
+      setTimeout(function () {
+        wait = false
+      }, limit)
+    }
+  }
+}
+/**
+ * Debounce - время ожидания после которого будет вызван callback
+ * @param {function} cb - callback
+ * @param {number} wait - время ожидания после которого будет вызван callback
+ */
+export const debounce = (cb, wait) => {
+  let timeout
+  return function (...args) {
+    const context = this
+    clearTimeout(timeout)
+    timeout = setTimeout(() => cb.apply(context, args), wait)
+  }
+}
