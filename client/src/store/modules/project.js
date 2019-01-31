@@ -27,8 +27,12 @@ export default {
     /**
      * Получение списка проектов
      */
-    async getProjects ({ commit }) {
-      const res = await getProjects()
+    async getProjects ({ commit }, payload) {
+      let query = {}
+
+      if (payload) query = payload.query
+
+      const res = await getProjects(query)
       commit('SET_PROJECTS', res.data.data)
     },
     /**
